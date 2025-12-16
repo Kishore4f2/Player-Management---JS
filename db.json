@@ -1,0 +1,64 @@
+{
+  "Data": [
+    {
+      "id": "1",
+      "JerseyNo": "18",
+      "Name": "Virat Kohli",
+      "image": "https://im.rediff.com/cricket/2022/sep/08vk.gif"
+    },
+    {
+      "id": "2",
+      "JerseyNo": "45",
+      "Name": "Rohit Sharma",
+      "image": "https://cdn.britannica.com/52/252752-050-2E120356/Cricketer-Rohit-Sharma-2023.jpg"
+    },
+    {
+      "id": "3",
+      "JerseyNo": "93",
+      "Name": "Jasprit Bumrah",
+      "image": "https://c.ndtvimg.com/2024-06/dlsrhcqo_jasprit-bumrah-afp_625x300_21_June_24.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=738"
+    },
+    {
+      "id": "4",
+      "JerseyNo": "33",
+      "Name": "Hardik Pandya",
+      "image": "https://pbs.twimg.com/media/GkDrhkhaAAAI3Qt.jpg"
+    },
+    {
+      "id": "5",
+      "JerseyNo": "1",
+      "Name": "K.L Rahul",
+      "image": "https://images.news18.com/ibnlive/uploads/2025/10/kl-rahul-century-record-india-vs-england-1st-test-ahmedabad-7-2025-10-c7196ef396f118c7d48dd8fc61849125-scaled.jpg"
+    },
+    {
+      "id": "6",
+      "JerseyNo": "7",
+      "Name": "M.S. Dhoni",
+      "image": "https://c.ndtvimg.com/2024-05/gh12dg1_ms-dhoni-bcci_625x300_07_May_24.jpg?im=FeatureCrop,algorithm=dnn,width=806,height=605"
+    },
+    {
+      "id": "7",
+      "JerseyNo": "10",
+      "Name": "Sachin Tendulkar",
+      "image": "https://www.royalchallengers.com/PRRCB01/public/styles/1061x767_landscape/public/2020-07/Sachin%20Tendulkar.jpg?h=920929c4&itok=Is5LHMDi"
+    },
+    {
+      "id": "8",
+      "JerseyNo": "8",
+      "Name": "Ravindra Jadeja",
+      "image": "https://c.ndtvimg.com/2025-03/7ep9fsuo_ravindra-jadeja_625x300_03_March_25.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=738"
+    },
+    {
+      "id": "9",
+      "JerseyNo": "77",
+      "Name": "Shubman Gill",
+      "image": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_w_1200,q_50/lsci/db/PICTURES/CMS/322600/322697.jpg"
+    },
+    {
+      "id": "10",
+      "JerseyNo": "63",
+      "Name": "Surya Kumar Yadav",
+      "image": "https://c.ndtvimg.com/2025-12/e6qp8guc_suryakumar-yadav_625x300_10_December_25.jpg?im=FeatureCrop,algorithm=dnn,width=1200,height=738"
+    }
+  ]
+}
