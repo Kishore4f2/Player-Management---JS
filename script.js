@@ -77,10 +77,10 @@ document.querySelector("button").addEventListener("click", async () => {
         });
     }
 
-    document.getElementById("id").value = "id";
-    document.getElementById("JerseyNo").value = "JerseyNo";
-    document.getElementById("Name").value = "name";
-    document.getElementById("image").value = "image";
+    document.getElementById("id").value = "";
+    document.getElementById("JerseyNo").value = "";
+    document.getElementById("Name").value = "";
+    document.getElementById("image").value = "";
 
     showdata();
 });
