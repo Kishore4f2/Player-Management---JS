@@ -1,11 +1,11 @@
 async function showdata() {
-    let res = await fetch("https://69418ee9686bc3ca8167667e.mockapi.io/api/data/Data");
+    let res = await fetch("https://player-management-js.onrender.com/Data");
     let data = await res.json();
     getData(data);
 }
 function getData(data) {
     let div1 = document.getElementById("main");
-    div1.innerHTML = ""; 
+    div1.innerHTML = "";
 
     data.forEach(player => {
         let div = document.createElement("div");
@@ -22,7 +22,7 @@ function getData(data) {
         div1.appendChild(div);
 
         div.querySelector(".delete").onclick = async () => {
-            await fetch(`https://69418ee9686bc3ca8167667e.mockapi.io/api/data/Data/${player.id}`, {
+            await fetch(`https://player-management-js.onrender.com/Data/${player.id}`, {
                 method: "DELETE"
             });
             showdata();
@@ -47,23 +47,23 @@ document.querySelector("button").addEventListener("click", async () => {
         alert("Please enter ID, JerseyNo, image and Name");
         return;
     }
-    
-    let res = await fetch(`https://69418ee9686bc3ca8167667e.mockapi.io/api/data/Data/${id}`);
 
-    if(res.ok) {
-        await fetch(`https://69418ee9686bc3ca8167667e.mockapi.io/api/data/Data/${id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            Name: name,
-            JerseyNo: JerseyNo,
-            image: image
-        })
-    });
-} else {
-    await fetch("https://69418ee9686bc3ca8167667e.mockapi.io/api/data/Data", {
+    let res = await fetch(`https://player-management-js.onrender.com/Data/${id}`);
+
+    if (res.ok) {
+        await fetch(`https://player-management-js.onrender.com/Data/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Name: name,
+                JerseyNo: JerseyNo,
+                image: image
+            })
+        });
+    } else {
+        await fetch("https://player-management-js.onrender.com/Data", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
