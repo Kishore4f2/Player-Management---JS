@@ -25,6 +25,7 @@ function getData(data) {
             await fetch(`https://player-management-js.onrender.com/Data/${player.id}`, {
                 method: "DELETE"
             });
+            alert("Player deleted successfully! 🗑️");
             showdata();
         };
 
@@ -62,6 +63,7 @@ document.querySelector("button").addEventListener("click", async () => {
                 image: image
             })
         });
+        alert("Player details updated successfully! 📝");
     } else {
         await fetch("https://player-management-js.onrender.com/Data", {
             method: "POST",
@@ -75,6 +77,7 @@ document.querySelector("button").addEventListener("click", async () => {
                 image: image
             })
         });
+        alert("Player added successfully! 🎉");
     }
 
     document.getElementById("id").value = "";
