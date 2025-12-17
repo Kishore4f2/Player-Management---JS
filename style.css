@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
@@ -238,6 +237,37 @@ button.submit-btn:hover {
     color: white;
 }
 
+/* Navigation Button */
+.nav-btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Glass effect */
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    /* Pill shape */
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.nav-btn:hover {
+    background: var(--gold);
+    color: var(--royal-blue);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     h1 {
@@ -252,5 +282,13 @@ button.submit-btn:hover {
     /* Reduce 3D effect on mobile for usability */
     #main>div:hover {
         transform: translateY(-5px);
+    }
+
+    .nav-btn {
+        position: static;
+        /* Stack on mobile */
+        display: block;
+        width: max-content;
+        margin: 0 auto 1.5rem auto;
     }
 }
