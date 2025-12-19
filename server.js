@@ -30,6 +30,10 @@ const dbConfig = {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT || 3306,
+    ssl: {
+        rejectUnauthorized: false
+    }
 };
 
 let db;
@@ -37,22 +41,13 @@ let db;
 // Initialize Database Function
 async function initDatabase() {
     try {
-        // Connect to MySQL server (without DB)
-        const connection = await mysql.createConnection(dbConfig);
-
-        // Create DB if not exists
-        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\``);
-        console.log(`Database ${process.env.DB_NAME} checked/created.`);
-
-        await connection.end();
-
-        // Connect to the specific DB
+        // Connect directly to the database
         db = await mysql.createConnection({
             ...dbConfig,
             database: process.env.DB_NAME
         });
 
-        console.log('Connected to MySQL Database.');
+        console.log('Connected to MySQL Database (Cloud).');
 
         // Create Users Table
         const createTableQuery = `
