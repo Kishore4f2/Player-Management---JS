@@ -292,3 +292,68 @@ button.submit-btn:hover {
         margin: 0 auto 1.5rem auto;
     }
 }
+
+/* =========================================
+   Login Page Specific Styles
+   ========================================= */
+
+.login-container {
+    flex-direction: column;
+    /* Stack items vertically for login */
+    align-items: stretch;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.3rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background: var(--gold);
+    color: var(--royal-blue);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.auth-form {
+    display: flex;
+    /* Default display for active form */
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Override .form-group flex-basis from main style */
+.auth-form .form-group {
+    flex: 1 1 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

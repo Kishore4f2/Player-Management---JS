@@ -1,3 +1,14 @@
+// Check authentication
+if (!localStorage.getItem('isLoggedIn')) {
+    window.location.href = 'login.html';
+}
+
+// Logout function
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = 'login.html';
+}
+
 async function showdata() {
     let res = await fetch("https://player-management-js.onrender.com/Data");
     let data = await res.json();
