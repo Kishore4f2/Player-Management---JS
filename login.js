@@ -48,8 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (res.ok) {
                 alert(`Welcome back, ${data.user.name}!`);
                 localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = 'index.html';
+                localStorage.setItem('user', JSON.stringify({ ...data.user, role: data.user.role }));
+                localStorage.setItem('user', JSON.stringify({ ...data.user, role: data.user.role }));
+
+                // Redirect based on role
+                if (data.user.role === 'admin') {
+                    window.location.href = 'index.html';
+                } else {
+                    window.location.href = 'user.html';
+                }
             } else {
                 alert(data.message || 'Login failed');
             }

@@ -17,7 +17,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .app-container {
             width: 100%;
             display: flex;
@@ -37,9 +37,9 @@
     <div class="app-container">
         <div class="login-wrapper">
             <h1 style="margin-bottom: 1rem;">Welcome Back</h1>
-            
+
             <div class="form-container login-container" style="max-width: 100%; margin: 0;">
-                
+
                 <!-- Toggle Switch -->
                 <div class="toggle-container">
                     <button id="show-signin" class="toggle-btn active">Sign In</button>
@@ -56,6 +56,10 @@
                     <div class="form-group">
                         <label for="signin-password">Password</label>
                         <input type="password" id="signin-password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div class="form-options" style="text-align: right; margin-bottom: 1rem;">
+                        <a href="#" class="forgot-password-link">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="submit-btn">Login</button>
@@ -86,9 +90,7 @@
                     <button type="submit" class="submit-btn">Create Account</button>
                 </form>
 
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--gold-light); font-size: 0.9rem;">
-                    <a href="index.html" style="color: var(--gold); text-decoration: none;">Skip to Dashboard (Demo)</a>
-                </p>
+                <!-- Skip link removed -->
             </div>
         </div>
     </div>

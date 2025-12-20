@@ -20,10 +20,7 @@ app.use(express.static(path.join(__dirname))); // Serve static files
 // BUT script.js calls external URL. If user changes script.js to local, this is needed.
 // Also if they push to Render, this fills the gap.
 // Note: json-server router should be separate.
-const jsonRouter = jsonServer.router('db.json');
-const jsonMiddlewares = jsonServer.defaults();
 
-app.use('/Data', jsonMiddlewares, jsonRouter); // Mount on /Data to serve db.json content
 
 // Database Configuration
 const dbConfig = {
@@ -56,10 +53,19 @@ async function initDatabase() {
                 name VARCHAR(255) NOT NULL,
                 email VARCHAR(255) NOT NULL UNIQUE,
                 password VARCHAR(255) NOT NULL,
+                role ENUM('user', 'admin') DEFAULT 'user',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         `;
         await db.query(createTableQuery);
+
+        // Check if role column exists, if not add it (for existing tables)
+        const [columns] = await db.query(`SHOW COLUMNS FROM users LIKE 'role'`);
+        if (columns.length === 0) {
+            await db.query(`ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user'`);
+            console.log('Role column added to users table.');
+        }
+
         console.log('Users table checked/created.');
 
     } catch (error) {
@@ -85,8 +91,11 @@ app.post('/register', async (req, res) => {
             return res.status(409).json({ message: 'User already exists' });
         }
 
+        // Determine role
+        const role = (email === 'satyakishore273@gmail.com') ? 'admin' : 'user';
+
         // Insert new user (Note: In production, password should be hashed!)
-        const [result] = await db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, password]);
+        const [result] = await db.query('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)', [name, email, password, role]);
 
         res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
 
@@ -115,7 +124,7 @@ app.post('/login', async (req, res) => {
         const user = rows[0];
         res.status(200).json({
             message: 'Login successful',
-            user: { id: user.id, name: user.name, email: user.email }
+            user: { id: user.id, name: user.name, email: user.email, role: user.role }
         });
 
     } catch (error) {
@@ -123,6 +132,41 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Server error during login' });
     }
 });
+
+// Get All Users Endpoint
+app.get('/users', async (req, res) => {
+    console.log('GET /users called');
+    try {
+        const [rows] = await db.query('SELECT id, name, email, role FROM users'); // Exclude password
+        console.log('Fetched users:', rows);
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Error fetching users' });
+    }
+});
+
+// Update User Role Endpoint
+app.patch('/users/:id/role', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { role } = req.body;
+
+        if (!['user', 'admin'].includes(role)) {
+            return res.status(400).json({ message: 'Invalid role' });
+        }
+
+        await db.query('UPDATE users SET role = ? WHERE id = ?', [role, id]);
+        res.status(200).json({ message: 'Role updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error updating role' });
+    }
+});
+
+const jsonRouter = jsonServer.router('db.json');
+const jsonMiddlewares = jsonServer.defaults();
+app.use('/', jsonMiddlewares, jsonRouter); // Mount at root so /Data matches 'Data' key
 
 // Start Server
 initDatabase().then(() => {

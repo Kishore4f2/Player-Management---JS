@@ -1,6 +1,6 @@
 async function showdata() {
     try {
-        let res = await fetch("https://player-management-js.onrender.com/Data");
+        let res = await fetch("/Data");
         let data = await res.json();
         getData(data);
     } catch (error) {
